@@ -2,11 +2,15 @@ import com.yassineS31.sqlcda.db.Bdd;
 import com.yassineS31.sqlcda.model.User;
 import com.yassineS31.sqlcda.repository.UserRepository;
 
+import java.util.List;
+
 
 public class Main {
     public static void main(String[] args) {
 
         User newUser = new User("Thomas", "Shelbyte", "toto@gmail.com", "123");
+        User newUser2 = new User("Viann", "Calambour", "Vianne@gmail.com", "123456");
+
         System.out.println(newUser);
         boolean exist = UserRepository.isExist("toto@gmail.com");
         if(exist) {
@@ -22,5 +26,10 @@ public class Main {
         }else {
             System.out.println("L'utilisateur n'existe pas");
         }
+
+        // findAll()
+        List<User> findAll = UserRepository.findAll();
+        System.out.println(findAll);
+
     }
 }

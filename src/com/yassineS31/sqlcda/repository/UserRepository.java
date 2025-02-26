@@ -6,6 +6,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class UserRepository {
     /*
@@ -87,6 +90,42 @@ public class UserRepository {
         }
 
         return findUser;
+    }
+    public static List<User> findAll() {
+        List<User> liste = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM users ";
+            //préparer la requête
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            //récupérer le resultat de la requête
+            ResultSet resultSet = preparedStatement.executeQuery();
+            // Verification
+            while (resultSet.next()) {
+              User user = new User(
+                        resultSet.getInt("id"),
+                        resultSet.getString("firstname"),
+                        resultSet.getString("lastname"),
+                        resultSet.getString("email")
+                );
+                liste.add(user);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return liste;
+    }
+
+    public static update(User user,String email){
+    }
+        try {
+            String sql = "UPDATE firstname,lastname,email FROM users VALUE (?,?,?) WHERE email = ?";
+        //préparer la requête
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        prepareStatement.setString(1, email.getFirstname());
+        prepareStatement.setString(2, email.getLastname());
+        prepareStatement.setString(3, email.getEmail());
     }
 
 }
