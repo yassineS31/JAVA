@@ -5,11 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Bdd {
-    public class Bdd {
         //Attribut paramètre BDD
-        static final String DB_URL = "jdbc:mysql://localhost:3307/javacda";
+        static final String DB_URL = "jdbc:mysql://127.0.0.1:3307/javacda";
         static final String USERNAME = "root";
-        static final String PASSWORD = "";
+        static final String PASSWORD = "123";
         //Connexion à la BDD
         private static Connection connexion;
         static {
@@ -19,5 +18,8 @@ public class Bdd {
                 throw new RuntimeException(e);
             }
         }
+        public static Connection getConnexion(){
+            return connexion;
+        }
     }
-}
+

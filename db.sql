@@ -9,3 +9,8 @@ lastname VARCHAR(50),
 email VARCHAR(50) UNIQUE,
 password VARCHAR(100)
 ) engine = InnoDB;
+
+
+
+-- GRANT ALL PRIVILEGES ON javacda.* TO 'admin'@'%' IDENTIFIED BY '123';
+-- FLUSH PRIVILEGES;
