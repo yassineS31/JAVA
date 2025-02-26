@@ -1,0 +1,11 @@
+CREATE DATABASE javacda;
+
+use javacda;
+
+CREATE TABLE IF NOT EXISTS users(
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+firstname VARCHAR(50),
+lastname VARCHAR(50),
+email VARCHAR(50) UNIQUE,
+password VARCHAR(100)
+) engine = InnoDB;
