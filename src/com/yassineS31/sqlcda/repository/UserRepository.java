@@ -63,8 +63,8 @@ public class UserRepository {
         return getUser;
     };
 
-    public static boolean findByEmail(String email) {
-        Boolean findUser= false;
+    public static User findByEmail(String email) {
+        User findUser= null;
         try {
             String sql = "SELECT id,firstname,lastname,email FROM users WHERE email = ?";
             //préparer la requête
@@ -75,7 +75,12 @@ public class UserRepository {
             ResultSet resultSet = preparedStatement.executeQuery();
             // Verification
             if (resultSet.next()) {
-                findUser = true;
+                findUser = new User(
+                        resultSet.getInt("id"),
+                        resultSet.getString("firstname"),
+                        resultSet.getString("lastname"),
+                        resultSet.getString("email")
+                );
             }
         } catch (Exception e){
         e.printStackTrace();

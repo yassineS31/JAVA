@@ -16,8 +16,8 @@ public class Main {
             System.out.println("Le compte n'existe pas");
         }
 
-        boolean findUser= UserRepository.findByEmail("toto545@gmail.com");
-        if(findUser){
+        User findEmail = UserRepository.findByEmail("toto@gmail.com");
+        if(!findEmail.getEmail().equals("")){
             System.out.println("L'utilisateur existe déjà en bdd !");
         }else {
             System.out.println("L'utilisateur n'existe pas");
